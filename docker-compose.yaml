@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      rollback_config:
+        parallelism: 1
+    volumes:
+      - vectorDB:/app/vectorDB
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+volumes:
+  vectorDB:
