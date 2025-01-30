@@ -9,3 +9,6 @@ class InputData(BaseModel):
     user_query:str
     username:str
     mode: str
+
+class getDataModel(BaseModel):
+    userInput:str
