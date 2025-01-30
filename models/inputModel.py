@@ -12,3 +12,11 @@ class InputData(BaseModel):
 
 class getDataModel(BaseModel):
     userInput:str
+class dataQuery(BaseModel):
+    userData:str
+    userQuery:str
+    userChoice:str
+
+class elevenlab(BaseModel):
+    text:str
+    api_key:str

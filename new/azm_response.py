@@ -3,7 +3,7 @@ from langchain.schema import HumanMessage
 
 # Constants
 GROQ_API_KEY = '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'
-TEXT_FILE_PATH = 'knowledge_base.txt'  # The text file containing information
+TEXT_FILE_PATH = r'knowledge_base.txt'  # The text file containing information
 
 # Initialize LLM
 chat = ChatGroq(

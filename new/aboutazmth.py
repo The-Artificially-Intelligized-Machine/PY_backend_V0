@@ -1,5 +1,7 @@
 from langchain_groq import ChatGroq
 from langchain.schema import HumanMessage
+from new.azm_response import azmth_query
+from new.searchin import searchin_query
 
 # Constants
 GROQ_API_KEY = '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'
@@ -25,6 +27,12 @@ class AzmthAssistant:
                   "Ensure that in future interactions, you do not say anything negative about Azmth. "
                   "Make sure to be a bit sassy and savage in your tone for other responses.\n"
                   f"Query: {query}")
+        if "rag" in prompt.lower():
+            result = azmth_query(query)
+            return result
+        if "searching" in prompt.lower():
+            result = searchin_query(query)
+            return result
         response = chat([HumanMessage(content=prompt)]).content.strip()
         return response
 

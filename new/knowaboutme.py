@@ -37,7 +37,7 @@ def read_csv(file_name):
             if "Data" in row:  # Ensure the 'Data' key exists
                 data.append(row)
             else:
-                print(f"Skipping row due to missing 'Data' key: {row}")
+                return(f"Skipping row due to missing 'Data' key: {row}")
     return data
 
 
@@ -62,21 +62,17 @@ def handle_query(query, data):
     return response
 
 
-def main():
+def dataquery(user_choice,new_data,user_query):
     interaction_count = 0
 
     while True:
-        print("\nOptions:")
-        print("1. Add data")
-        print("2. Query data")
-        print("3. Exit")
-        user_choice = input("Choose an option (1/2/3): ").strip()
+        user_choice = user_choice.strip()
 
         if user_choice == "1":
-            new_data = input("Enter the data to save: ").strip()
+            new_data = new_data.strip()
             # Save data in consistent format
             save_to_csv(csv_file, [{"Data": new_data}])
-            print("Data saved successfully.")
+            return ("Data saved successfully.")
 
         elif user_choice == "2":
             stored_data = read_csv(csv_file)
@@ -84,28 +80,24 @@ def main():
                 # Safely extract the 'Data' column
                 stored_text = "\n".join(
                     [row.get("Data", "Unknown Data") for row in stored_data])
-                print(f"\nStored Data:\n{stored_text}")
-                user_query = input("\nEnter your query: ").strip()
-                response = handle_query(user_query, stored_text)
-                print(f"\nResponse:\n{response}")
+                storedata = (f"\nStored Data:\n{stored_text}")
+                user_query = user_query.strip()
+                res = handle_query(user_query, stored_text)
+                response = (f"\nResponse:\n{res}")
 
                 interaction_count += 1
 
                 # Summarize after every 5 interactions
                 if interaction_count % 5 == 0:
                     summary = summarize_data(stored_text)
-                    print(f"\nSummarized Data:\n{summary}")
+                    summarize = (f"\nSummarized Data:\n{summary}")
                     save_context_to_txt(context_file, summary)
+                    return (storedata + response + summarize)
             else:
-                print("No data found in the database.")
+                return("No data found in the database.")
 
         elif user_choice == "3":
-            print("Exiting program.")
-            break
+            return("Exiting program.")
 
         else:
-            print("Invalid choice. Please select 1, 2, or 3.")
-
-
-if __name__ == "__main__":
-    main()
+            return("Invalid choice. Please select 1, 2, or 3.")
