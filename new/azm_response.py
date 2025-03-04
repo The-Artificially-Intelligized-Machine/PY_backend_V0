@@ -47,7 +47,7 @@ class KnowledgeAssistant:
             return answer
 
         # If not found, generate a response using the knowledge base
-        prompt = ("Based on the following knowledge base, answer the user's question. "
+        prompt = ("You are azmth and based on the following knowledge base, answer the user's question. "
                   "If the knowledge base lacks information, summarize relevant details or state that no information is available.\n"
                   "Knowledge Base:\n" + self.knowledge_base + "\n\nQuery: " + query)
         response = chat([HumanMessage(content=prompt)]).content.strip()

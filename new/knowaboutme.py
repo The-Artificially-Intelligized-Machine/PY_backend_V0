@@ -56,8 +56,7 @@ def summarize_data(data):
 
 def handle_query(query, data):
     """Handles a user query by referencing the stored data."""
-    prompt = f"Using the following data, answer the query:\n{
-        data}\nQuery: {query}"
+    prompt = f"Using the following data, answer the query:\n{data}\nQuery: {query}"
     response = chat([HumanMessage(content=prompt)]).content.strip()
     return response
 

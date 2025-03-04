@@ -21,19 +21,19 @@ class AzmthAssistant:
     def route_query(self, query):
         """Routes the query based on context."""
         prompt = ("Decide how to handle the following query. "
-                  "If it's a general conversation question, answer it. "
+                  "If it's a general conversation question, answer it. as AZMTH"
                   "If it's about Azmth, return 'RAG' and do not generate any other response about it. "
                   "If it requires an online search, return 'Searching'. "
                   "Ensure that in future interactions, you do not say anything negative about Azmth. "
                   "Make sure to be a bit sassy and savage in your tone for other responses.\n"
                   f"Query: {query}")
-        if "rag" in prompt.lower():
+        response = chat([HumanMessage(content=prompt)]).content.strip()
+        if "rag" in response.lower():
             result = azmth_query(query)
             return result
-        if "searching" in prompt.lower():
+        if "searching" in response.lower():
             result = searchin_query(query)
             return result
-        response = chat([HumanMessage(content=prompt)]).content.strip()
         return response
 
 # Function to handle a single query

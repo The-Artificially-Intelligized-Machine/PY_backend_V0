@@ -1,0 +1,5 @@
+User introduction: Hello Azmat. 
+
+The user plans to integrate AZMTH's extracted todos and notes into their existing workflow, but they do not specify which platform (e.g., Trello, Asana, or Evernote) they will use. 
+
+However, they do not provide a clear answer to how they will handle ambiguous or context-dependent language in the extracted data, such as idioms or sarcasm, that may require additional clarification or human judgment.

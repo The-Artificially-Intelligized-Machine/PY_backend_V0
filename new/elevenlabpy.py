@@ -21,17 +21,14 @@ def download_elevenlabs_as_ogg(text, api_key):
         str: Filename of the created audio file, or None if there was an error
     """
     base_folder="output"
+    unique_id="wivibhvrbjhrsbv"
     # Create output folder if it doesn't exist
     os.makedirs(base_folder, exist_ok=True)
-
-    # Generate unique filename using timestamp and UUID
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    unique_id = str(uuid.uuid4())[:8]
-    filename = f"audio_{timestamp}_{unique_id}.ogg"
+    filename = f"audio_{unique_id}.ogg"
     output_path = os.path.join(base_folder, filename)
 
     # ElevenLabs API endpoint
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb"
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/syMfsRXCeuNoZvrh1VII"
 
     # Request headers
     headers = {
